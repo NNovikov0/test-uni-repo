@@ -1,11 +1,9 @@
 <?php
-// Database configuration
-$host = 'localhost';
-$dbname = 'task_manager';
-$username = 'root';
-$password = '';
+$host = getenv('DB_HOST') ?: '136.114.93.122';
+$dbname = getenv('DB_NAME') ?: '88327';
+$username = getenv('DB_USER') ?: 'stud';
+$password = getenv('DB_PASSWORD') ?: 'Uwb123!!';
 
-// Create database connection
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -207,7 +205,7 @@ $tasks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
     <div class="container">
-        <h1>📝 Task Manager</h1>
+        <h1>Task Manager</h1>
         
         <form method="POST">
             <input type="hidden" name="action" value="add">
